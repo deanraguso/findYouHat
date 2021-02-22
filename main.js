@@ -37,8 +37,6 @@ const gY = Math.round(Math.random()*(height-1));
  
 map[gX][gY] = hat;
 
-pMap(map, width, height);
-
 //Define a checkState function
 cState = (map, w, h, hat) => {
     //Returns 1 if won, 0 if not yet.
@@ -51,4 +49,12 @@ cState = (map, w, h, hat) => {
     return condition;
 }
 
-console.log(cState(map, width, height, hat));
+//Create a game loop and character
+iX = Math.min(width-1, width-gX)
+iY = Math.min(height-1, height-gY)
+map[iX][iY] = pathCharacter;
+while(cState(map, width, height, hat)){
+    pMap(map, width, height);
+    var move = prompt("Enter a move (u,d,l,r): ");
+}  
+
