@@ -5,7 +5,7 @@ const hole = 'O';
 const fieldCharacter = '░';
 const pathCharacter = '*';
 
-const elements = [hole, fieldCharacter, pathCharacter]
+const elements = [hole, fieldCharacter, fieldCharacter, fieldCharacter]
 
 //Initialize the map
 const width = prompt("Enter map width: ")
@@ -23,7 +23,12 @@ for (i = 0; i < width; i++) {
 
 //Print map function
 pMap = (map, w, h) => {
-    console.log(map[1][1])
+    for (i = 0; i < height; i++) {
+        for (j = 0; j < width; j++){
+            process.stdout.write(map[j][i])
+        }
+        console.log();
+    }
 }
 
 pMap(map, width, height);
