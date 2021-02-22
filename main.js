@@ -20,3 +20,10 @@ for (i = 0; i < width; i++) {
         map[i][j] = elements[Math.round(Math.random()*2)];
     }
 }
+
+//Print map function
+pMap = (map, w, h) => {
+    console.log(map[1][1])
+}
+
+pMap(map, width, height);
