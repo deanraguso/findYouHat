@@ -31,4 +31,24 @@ pMap = (map, w, h) => {
     }
 }
 
+//Place hat somewhere on map
+const gX = Math.round(Math.random()*(width-1));
+const gY = Math.round(Math.random()*(height-1));
+ 
+map[gX][gY] = hat;
+
 pMap(map, width, height);
+
+//Define a checkState function
+cState = (map, w, h, hat) => {
+    //Returns 1 if won, 0 if not yet.
+    var condition = 1;
+    for (i = 0; i < height; i++) {
+        for (j = 0; j < width; j++){
+            condition = map[i][j] == hat ? 0 : 1; 
+        }
+    }
+    return condition;
+}
+
+console.log(cState(map, width, height, hat));
