@@ -40,12 +40,11 @@ map[gX][gY] = hat;
 //Define a checkState function
 cState = (map, w, h, hat) => {
     //Returns 1 if won, 0 if not yet.
-    var condition = 1;
+    var condition = 0;
     for (i = 0; i < height; i++) {
         for (j = 0; j < width; j++){
             if(map[i][j] == hat){
-                console.log("Hat found")
-                consition = 0;
+                condition = 1;
             }
         }
     }
@@ -85,7 +84,7 @@ var ypos = iY;
 while(cState(map, width, height, hat)){
     pMap(map, width, height);
     var move = prompt("Enter a move (u,d,l,r): ");
-    console.log(xpos, ypos);
+
     var x = xpos;
     var y = ypos;
 
@@ -95,4 +94,6 @@ while(cState(map, width, height, hat)){
         ypos = move == 'u' ? ypos - 1: move == 'd' ? ypos +1 : ypos;
     }
 }  
+
+console.log("You win!");
 
