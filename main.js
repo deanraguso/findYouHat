@@ -49,6 +49,27 @@ cState = (map, w, h, hat) => {
     return condition;
 }
 
+//Move function - changes game state - returns 1 if move was legal, 0 if not
+move = (map, w, h, move, x, y) => {
+    //initialize future move to current x and y
+    futX = x;
+    futY = y;
+
+    //Check Requested move is valid
+    futX = move == 'l' ? futX -1 : move == 'r' ? futX + 1 : futX;
+    futY = move == 'u' ? futY + 1 : move == 'd' ? futY -1 : futY;
+
+    //Check it's on the map
+    if (futX < 0 || futX >= w) return 0;
+    if (futY < 0 || futY >= h) return 0;
+ 
+    //Check it's not moving into a hole
+    if (map[futX][futY] == hole) return 0;
+
+    //Move should be valid, so make the move;
+    map[futX][futY] = pathCharacter;
+}
+
 //Create a game loop and character
 iX = Math.min(width-1, width-gX)
 iY = Math.min(height-1, height-gY)
@@ -56,5 +77,6 @@ map[iX][iY] = pathCharacter;
 while(cState(map, width, height, hat)){
     pMap(map, width, height);
     var move = prompt("Enter a move (u,d,l,r): ");
+    
 }  
 
