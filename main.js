@@ -43,21 +43,24 @@ cState = (map, w, h, hat) => {
     var condition = 1;
     for (i = 0; i < height; i++) {
         for (j = 0; j < width; j++){
-            condition = map[i][j] == hat ? 0 : 1; 
+            if(map[i][j] == hat){
+                console.log("Hat found")
+                consition = 0;
+            }
         }
     }
     return condition;
 }
 
 //Move function - changes game state - returns 1 if move was legal, 0 if not
-move = (map, w, h, move, x, y) => {
+moveF = (map, w, h, move, x, y) => {
     //initialize future move to current x and y
     futX = x;
     futY = y;
 
     //Check Requested move is valid
-    futX = move == 'l' ? futX -1 : move == 'r' ? futX + 1 : futX;
-    futY = move == 'u' ? futY + 1 : move == 'd' ? futY -1 : futY;
+    futX = move == 'l' ? futX - 1 : move == 'r' ? futX + 1 : futX;
+    futY = move == 'u' ? futY - 1 : move == 'd' ? futY + 1 : futY;
 
     //Check it's on the map
     if (futX < 0 || futX >= w) return 0;
@@ -68,15 +71,28 @@ move = (map, w, h, move, x, y) => {
 
     //Move should be valid, so make the move;
     map[futX][futY] = pathCharacter;
+    return 1;
 }
 
 //Create a game loop and character
 iX = Math.min(width-1, width-gX)
 iY = Math.min(height-1, height-gY)
 map[iX][iY] = pathCharacter;
+
+var xpos = iX;
+var ypos = iY;
+
 while(cState(map, width, height, hat)){
     pMap(map, width, height);
     var move = prompt("Enter a move (u,d,l,r): ");
-    
+    console.log(xpos, ypos);
+    var x = xpos;
+    var y = ypos;
+
+    //Manage moves
+    if(moveF(map, width, height, move, x, y)){
+        xpos = move == 'r' ? xpos + 1: move == 'l' ? xpos -1 : xpos;
+        ypos = move == 'u' ? ypos - 1: move == 'd' ? ypos +1 : ypos;
+    }
 }  
 
