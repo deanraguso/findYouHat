@@ -58,8 +58,8 @@ moveF = (map, w, h, move, x, y) => {
     futY = y;
 
     //Check Requested move is valid
-    futX = move == 'l' ? futX - 1 : move == 'r' ? futX + 1 : futX;
-    futY = move == 'u' ? futY - 1 : move == 'd' ? futY + 1 : futY;
+    futX = move == 'a' ? futX - 1 : move == 'd' ? futX + 1 : futX;
+    futY = move == 'w' ? futY - 1 : move == 's' ? futY + 1 : futY;
 
     //Check it's on the map
     if (futX < 0 || futX >= w) return 0;
@@ -83,15 +83,15 @@ var ypos = iY;
 
 while(cState(map, width, height, hat)){
     pMap(map, width, height);
-    var move = prompt("Enter a move (u,d,l,r): ");
+    var move = prompt("Enter a move (w,s,a,d): ");
 
     var x = xpos;
     var y = ypos;
 
     //Manage moves
     if(moveF(map, width, height, move, x, y)){
-        xpos = move == 'r' ? xpos + 1: move == 'l' ? xpos -1 : xpos;
-        ypos = move == 'u' ? ypos - 1: move == 'd' ? ypos +1 : ypos;
+        xpos = move == 'd' ? xpos + 1: move == 'a' ? xpos -1 : xpos;
+        ypos = move == 'w' ? ypos - 1: move == 's' ? ypos +1 : ypos;
     }
 }  
 
