@@ -4,7 +4,7 @@
 ### Original idea adapted from a codeacademy project, found on www.codecademy.com.
 
 <br/>
-<div style="text-align:center"><image src="images/Gameplay.png"></div>
+<image src="images/Gameplay.png">
 
 ## Aim
 Move the * character to the ^ hat.
