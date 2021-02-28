@@ -42,6 +42,22 @@ moveF = (map, w, h, move, x, y) => {
 pathFinder = (map, w, h, sx, sy, hat, path) => {
     testMap = JSON.parse(JSON.stringify(map));
     pMap(testMap, w, h);
+
+    //Loop through making decisions on map copy.
+    var count = 0;
+    const maxCount = 50;
+    do {
+        console.log(count + "\n");
+        count++;
+
+        if (count > maxCount) {
+            console.log(count);
+            return -1;
+        }
+
+    } while (cState(map,width, height, hat))
+
+    return path;
 }
 
 // Check state is winnable
@@ -113,6 +129,7 @@ map[iX][iY] = pathCharacter;
 var xpos = iX;
 var ypos = iY;
 
+console.log("###path finder####");
 path = [];
 pathFinder(map, width, height, xpos, ypos, hat, path);
 
